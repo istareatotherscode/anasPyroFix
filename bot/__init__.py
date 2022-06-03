@@ -485,12 +485,6 @@ try:
     SEARCH_PLUGINS = jsnloads(SEARCH_PLUGINS)
 except:
     SEARCH_PLUGINS = None
-try:
-    IMAGE_URL = getConfig('IMAGE_URL')
-    if len(IMAGE_URL) == 0:
-        IMAGE_URL = None
-except KeyError:
-    IMAGE_URL = 'https://github.com/istareatotherscode/anasPyroFix/blob/master/la_sirena69_jj.jpg'
 
 updater = tgUpdater(token=BOT_TOKEN, request_kwargs={'read_timeout': 20, 'connect_timeout': 15})
 bot = updater.bot
