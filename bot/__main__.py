@@ -20,7 +20,7 @@ from .helper.telegram_helper.button_build import ButtonMaker
 from .modules import authorize, list, cancel_mirror, mirror_status, mirror, clone, shell, eval, delete, count, leech_settings, rss
 
 
-IMAGE_X = f"{IMAGE_URL}"
+#IMAGE_X = f"{IMAGE_URL}"
 
 def stats(update, context):
     if ospath.exists('.git'):
@@ -63,8 +63,8 @@ def stats(update, context):
             f'<b>Memory Free:</b> {mem_a}\n'\
             f'<b>Memory Used:</b> {mem_u}\n'
     
-    update.effective_message.reply_photo(IMAGE_X, stats, parse_mode=ParseMode.HTML)
-    #sendMessage(stats, context.bot, update.message)
+    #update.effective_message.reply_photo(IMAGE_X, stats, parse_mode=ParseMode.HTML)
+    sendMessage(stats, context.bot, update.message)
 
 
 def start(update, context):
@@ -85,7 +85,7 @@ def restart(update, context):
     if Interval:
         Interval[0].cancel()
     clean_all()
-    #srun(["pkill", "-f", "gunicorn|aria2c|qbittorrent-nox"])
+    srun(["pkill", "-f", "gunicorn|aria2c"])
     srun(["python3", "update.py"])
     with open(".restartmsg", "w") as f:
         f.truncate(0)
